@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import { MuiThemeProvider, createMuiTheme } from "@material-ui/core/styles"
+import Notification from './components/atoms/Notification'
+import LoginPage from './components/pages/LoginPage'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom"
+
+// FIXME: MaterialUI gobal theme ovveride, replace to another file for sharing with storybook.js
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: "#003594"
+    }
+  }
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <Notification />
+      <Switch>
+        <Route exact path="/">
+          <LoginPage />
+        </Route>
+      </Switch>
+    </Router>
+  )
 }
 
-export default App;
+export default App
