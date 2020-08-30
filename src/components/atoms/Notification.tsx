@@ -29,7 +29,8 @@ class Notification extends React.Component<NotificationProps, {}>{
     render(){
         console.log(this.props)
         const { show } = this.props
-        return  <div onClick={this.toogle}>{show ? 'show' : 'hide'}</div>
+        return null
+        // return  <div onClick={this.toogle}>{show ? 'notif show' : 'notif hide'}</div>
     }
 }
 

@@ -4,7 +4,9 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
-import {configureStore} from './store/store'
+import { configureStore } from './store/store'
+import { MuiThemeProvider } from "@material-ui/core/styles"
+import Theme from './Theme'
 
 export const store = configureStore();
 
@@ -12,7 +14,9 @@ ReactDOM.render(
   
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+      <MuiThemeProvider theme={Theme} >
+        <App />
+      </MuiThemeProvider>
     </Provider>
   </React.StrictMode>
   ,

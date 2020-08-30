@@ -1,4 +1,5 @@
 export const CHANGE_LOGIN = 'CHANGE_LOGIN'
+export const VALIDATE_LOGIN = 'VALIDATE_LOGIN'
 
 export interface LoginState {
     login: string,
@@ -11,4 +12,9 @@ export interface ChangeLoginAction {
   payload: string
 }
 
-export type loginActionTypes = ChangeLoginAction// | DeleteMessageAction
+export interface ValidateLogin {
+  type: typeof VALIDATE_LOGIN
+  payload: any
+}
+
+export type loginActionTypes = ChangeLoginAction | ValidateLogin// | DeleteMessageAction

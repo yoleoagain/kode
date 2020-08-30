@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Theme from '../../Theme'
 
 type LoginTemplateProps = {
     navigation?: React.FC | React.ReactElement,
@@ -11,15 +12,23 @@ type LoginTemplateProps = {
 const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
+    padding: ${Theme.spacing(5)};
+`
+
+const ElementWrapper = styled.span`
+    padding: ${Theme.spacing(4, 0)};
+    width: 100%;
+    display: flex;
+    flex-direction: column;
 `
 
 const LoginTemplate: React.FC<LoginTemplateProps> = (props) => {
     return (
         <Wrapper>
             {props.navigation}
-            {props.input}
-            {props.button}
-            {props.signUp}
+            <ElementWrapper>{props.input}</ElementWrapper>
+            <ElementWrapper>{props.button}</ElementWrapper>
+            <ElementWrapper>{props.signUp}</ElementWrapper>
         </Wrapper>
     )
 }

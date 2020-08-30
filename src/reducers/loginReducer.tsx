@@ -1,18 +1,32 @@
-import { LoginState, loginActionTypes, CHANGE_LOGIN } from './types/Login'
-import { isNumberOrEmail } from '../common/utils'
+import { LoginState, loginActionTypes, CHANGE_LOGIN, VALIDATE_LOGIN } from './types/Login'
+import { isNumberOrEmail, isEmail, isPhoneNumber } from '../common/utils'
 
 const initialState: LoginState = {
   login: '',
-  loginIsValid: false,
-  channel: null
+  loginIsValid: true,
+  channel: null,
 }
 
 export function loginReducer(state = initialState, action: loginActionTypes): LoginState {
   switch (action.type) {
     case CHANGE_LOGIN:
-      const { payload } = action  
-      return {...state, login: payload, channel: isNumberOrEmail(payload) };
+      return {...state, login: action.payload, channel: isNumberOrEmail(action.payload) }
   
+    case VALIDATE_LOGIN:
+      const { login } = state
+      let channel = null
+      let loginIsValid = false
+
+      if (isPhoneNumber(login)){
+        channel = 'phone'
+        loginIsValid = true
+      } else if (isEmail(login)){
+        channel = 'email'
+        loginIsValid = true
+      }
+
+      return {...state, loginIsValid}
+
     default:
       return state;
   }
