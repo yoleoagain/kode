@@ -21,16 +21,13 @@ class Notification extends React.Component<NotificationProps, {}>{
     constructor(props: NotificationProps){
         super(props)
 
-        this.toogle = this.toogle.bind(this)
     }
-
-    toogle(){ return this.props.show ? this.props.hideNotification() : this.props.showNotification() }
 
     render(){
         console.log(this.props)
         const { show } = this.props
         return null
-        // return  <div onClick={this.toogle}>{show ? 'notif show' : 'notif hide'}</div>
+        return  <div onClick={this.props.hideNotification}>{show ? 'notif show' : 'notif hide'}</div>
     }
 }
 

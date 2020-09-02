@@ -3,8 +3,7 @@ export const HIDE_NOTIFICATION = 'HIDE_NOTIFICATION'
 export const SET_NOTIFICATION_OPTIONS = 'SET_NOTIFICATION_OPTIONS'
 
 export interface NotificationOptions {
-    type: "warning" | "error",
-    title: string,
+    type: "success" | "error",
     text: string
 }
 
@@ -16,7 +15,7 @@ export type NotificationState = NotificationOptions & DisplayOptions
 
 export interface ShowNotification {
   type: typeof SHOW_NOTIFICATION
-  payload: any
+  payload: NotificationOptions
 }
 
 export interface HideNotification {

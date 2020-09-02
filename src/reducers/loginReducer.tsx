@@ -5,6 +5,7 @@ const initialState: LoginState = {
   login: '',
   loginIsValid: true,
   channel: null,
+  fetching: false
 }
 
 export function loginReducer(state = initialState, action: loginActionTypes): LoginState {

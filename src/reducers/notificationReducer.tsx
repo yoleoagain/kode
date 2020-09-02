@@ -7,8 +7,7 @@ import {
 } from '../reducers/types/Notification'
 
 const initialState: NotificationState = {
-    type: "warning",
-    title: "",
+    type: "error",
     text: "",
     show: false
 }
@@ -16,7 +15,7 @@ const initialState: NotificationState = {
 export function notificationReducer(state = initialState, action: NotificationActionTypes) : NotificationState {
     switch(action.type){
         case SHOW_NOTIFICATION:
-            return {...state, show: true}
+            return {...state, ...action.payload, show: true}
 
         case HIDE_NOTIFICATION: 
             return {...state, show: false}

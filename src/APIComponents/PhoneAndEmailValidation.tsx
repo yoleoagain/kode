@@ -1,19 +1,13 @@
 import React, { useState, isValidElement, cloneElement, InputHTMLAttributes } from 'react'
 import { connect, ConnectedProps, DispatchProp } from 'react-redux'
 import { changeLogin, validateLogin } from '../actions/loginActions'
+import { RootState } from '../reducers/rootReducer' 
+
 import InputMasked from './InputMasked'
 import { LoginState } from '../reducers/types/Login'
 import MaskedInput, { maskArray } from 'react-text-mask'
 
 interface Props {  }
-interface RootState {
-    login: {
-        login: string,
-        loginIsValid: boolean, 
-        channel: 'phone' | 'email' | null // Для маски на этапе ввода
-    }
-}
-
 const mapStateToProps = (state: RootState) => ({ login: state.login.login, loginIsValid: state.login.loginIsValid, channel: state.login.channel })
 const mapDispatchToProps = { 
     changeLogin: (event: React.FormEvent<HTMLInputElement>) => changeLogin(event.currentTarget.value),
@@ -49,11 +43,9 @@ function PhoneAndEmailValidation<T>(props: React.PropsWithChildren<Props> & Conn
         // }
     }
 
-    if (isValidElement(props.children)){
-        return cloneElement(props.children, inputProps)
-    } else{
-        return <>{props.children}</>
-    }
+    
+    return isValidElement(props.children) ? cloneElement(props.children, inputProps) : <>{props.children}</>
+
 }
 
 export default connector(PhoneAndEmailValidation)
