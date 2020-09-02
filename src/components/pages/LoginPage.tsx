@@ -6,20 +6,22 @@ import Button from '../atoms/Button'
 import Navbar from '../molecules/Navbar'
 import LoginTemplate from '../templates/LoginTemplate'
 import PhoneAndEmailValidation from '../../APIComponents/PhoneAndEmailValidation'
+import LoginButton from '../../APIComponents/LoginButton'
 import SignUpLink  from '../molecules/SignUpLink'
 
-const mapState = (state: RootState) => ({ fetching: state.login.fetching })
-const mapDispatch = {}
-const connector = connect(mapState, mapDispatch)
-type ReduxProps = ConnectedProps<typeof connector>
-
-const LoginPage = (props: ReduxProps) => {
+const LoginPage = () => {
     const input = (
         <PhoneAndEmailValidation>
             <TextField />
         </PhoneAndEmailValidation>
     )
-    const button = <Button disabled={props.fetching} color="primary">Войти</Button>
+    // Запуск 
+    // const button = (
+    //     <LoginButton>
+    //         <Button color="primary">Войти</Button>            
+    //     </LoginButton>
+    // )
+    const button = <Button color="primary">Войти</Button>
 
     return (
         <LoginTemplate 
@@ -31,4 +33,4 @@ const LoginPage = (props: ReduxProps) => {
     )
 }
 
-export default connector(LoginPage)
+export default LoginPage

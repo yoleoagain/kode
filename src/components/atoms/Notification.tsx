@@ -17,14 +17,12 @@ const mapStateToProps = (state: RootState) => state.notification
 const mapDispatchToProps = { showNotification, hideNotification }
 
 class Notification extends React.Component<NotificationProps, {}>{
-
     constructor(props: NotificationProps){
         super(props)
 
     }
 
     render(){
-        console.log(this.props)
         const { show } = this.props
         return null
         return  <div onClick={this.props.hideNotification}>{show ? 'notif show' : 'notif hide'}</div>
